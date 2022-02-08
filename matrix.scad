@@ -1,8 +1,8 @@
 dist = 10;   // 1cm spacing
-ledsize = 6; // 5050 led
+ledsize = 6; // 5050 led + 1mm
 height = 5;  // Height of the entire thing
-w = 2;
-h = 3;
+w = 16;
+h = 16;
 extr_width=0.4; // Nossle width
 border = 2.5;
 
@@ -14,7 +14,7 @@ angle_w = (dist - ledsize)/2;
 edge_len = sqrt(angle_h*angle_h + angle_w*angle_w)+0.4;
 angle_a = atan(angle_w / angle_h  );
 
-intersection() {
+//intersection() {
 intersection() {
     translate([-border,-border,0])
     cube([w*dist+border*2, h*dist+border*2, height]);
@@ -55,7 +55,7 @@ intersection() {
         translate([-border, h*dist,0])
         cube([w*dist+border*2, border, height]);
     }
-}
+/*}
 translate([-border, -border,0])
-        cube([w*dist+border+extr_width, h*dist+border+extr_width, height]);
+        cube([w*dist+border+extr_width, h*dist+border+extr_width, height]);*/
 }
