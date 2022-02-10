@@ -43,8 +43,6 @@ void loop()
     int len = Udp.read(incomingPacket, NUM_LEDS * 3);
     if (len == NUM_LEDS * 3)
     {
-      //      Serial.printf("UDP packet contents: %d\n", len);
-
       for (uint8_t y = 0; y < MATRIX_HEIGHT; y++)
       {
         for (uint8_t x = 0; x < MATRIX_WIDTH; x++)
@@ -56,9 +54,9 @@ void loop()
               incomingPacket[start + 2]);
         }
       }
+      FastLED.show();
     }
   }
-  FastLED.show();
 }
 
 void DrawOneFrame(uint8_t startHue8, int8_t yHueDelta8, int8_t xHueDelta8)
@@ -81,12 +79,10 @@ void setup()
   FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection(TypicalSMD5050);
   FastLED.setBrightness(BRIGHTNESS);
   FastLED.setCorrection(TypicalSMD5050);
+  WiFi.setSleepMode(WIFI_MODEM_SLEEP);
   FastLED.clear();
   DrawOneFrame(1, 32, 192);
-  for (uint8_t x = 0; x < 10; x++)
-  {
-    FastLED.show();
-  }
+  FastLED.show();
 
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
