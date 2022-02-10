@@ -14,7 +14,6 @@ angle_w = (dist - ledsize)/2;
 edge_len = sqrt(angle_h*angle_h + angle_w*angle_w)+0.4;
 angle_a = atan(angle_w / angle_h  );
 
-//intersection() {
 intersection() {
     translate([-border,-border,0])
     cube([w*dist+border*2, h*dist+border*2, height]);
@@ -55,7 +54,4 @@ intersection() {
         translate([-border, h*dist,0])
         cube([w*dist+border*2, border, height]);
     }
-/*}
-translate([-border, -border,0])
-        cube([w*dist+border+extr_width, h*dist+border+extr_width, height]);*/
 }
